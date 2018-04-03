@@ -1,9 +1,16 @@
 # django_vulnerable
-Is a vulnerable app for lear about web security
+Is a vulnerable app for learn about web security
 
-## Technologies
-- Backend
+## Backend
   * Python 3
   * Django 2
   * Pipenv
   * Django Extensions
+
+## Let Start
+```
+pipenv install
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
