@@ -4,10 +4,12 @@
 
 {% block head %}{% endblock %}
 
-{% block container %}
+{% block body %}
+<main role="main">
+<div class="container">
 <form class="form-ping" method="POST">
   <img class="mb-4" src="{% static "images/mlw.re.png" %}" alt="" width="128" height="128">
-  <h1 class="h3 mb-3 font-weight-normal">Check your connectivity</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Python Calculator</h1>
   {% if errors %}<div class="alert alert-danger" role="alert">
     {{ errors }}
   </div>{% endif %}
@@ -22,19 +24,19 @@
   <select name="mode" id="inputMode" class="form-control">{% for mode in modes %}
       <option value="{{ mode }}">{{ mode }}</option>
   {% endfor %}</select>
-  <label for="inputCode" class="sr-only">IP address</label>
+  <label for="inputCode" class="sr-only">Formula</label>
   <input name="code" type="text" id="inputCode" class="form-control"
          placeholder="Python code" required autofocus>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Execute</button>
 
   <div class="alert alert-warning" role="alert">
     {{ exploit|linebreaks }}
-    <pre>{{ helper }}</pre>
   </div>
   <div class="alert alert-primary" role="alert">
-    <pre>{{ globals }}</pre>
-    <pre>{{ locals }}</pre>
+    <pre>{% for key, val in locals.items %}{{ key }}:{{ val }}
+    {% endfor %}</pre>
   </div>
-
 </form>
+
+</main>
 {% endblock %}

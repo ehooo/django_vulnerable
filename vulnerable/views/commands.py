@@ -41,7 +41,7 @@ class CommandsView(TemplateView):
             else:
                 output = ''
                 context.update({
-                    'error': 'Mode not supported',
+                    'errors': 'Mode not supported',
                 })
 
             if code == 0:
@@ -50,11 +50,11 @@ class CommandsView(TemplateView):
                 })
             else:
                 context.update({
-                    'error': 'Wrong code {}'.format(code),
+                    'errors': 'Wrong code {}'.format(code),
                 })
         except Exception as ex:
             context.update({
-                'error': "Error detected {}".format(ex),
+                'errors': "Error detected {}".format(ex),
             })
         finally:
             context.update({

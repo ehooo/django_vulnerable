@@ -19,11 +19,15 @@
           position: absolute;
           bottom: 0px;
         }
+        #navbarHeader{
+            display: block;
+        }
     </style>
     {% block head %}{% endblock %}
 </head>
-<body class="text-center">
+<body class="{% block body_class %}text-center{% endblock %}">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
   <a class="navbar-brand" href="#">Django Vulnerable</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarTitle" aria-controls="navbarTitle"
@@ -34,10 +38,17 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="{% url 'about' %}">About</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">List</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'list' %}" id="dropdown_list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vulnerabilities List</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown_list">
+          <a class="dropdown-item" href="{% url 'sql_basic' %}">SQL injection</a>
+          <a class="dropdown-item" href="{% url 'sql_extra_where' %}">SQLi via ORM</a>
+          <a class="dropdown-item" href="{% url 'command_basic' %}">OS Command</a>
+          <a class="dropdown-item" href="{% url 'code_basic' %}">Code injection</a>
+          <a class="dropdown-item" href="{% url 'list' %}">XSS</a>
+        </div>
       </li>
       {% block nav_items %}{% endblock %}
     </ul>

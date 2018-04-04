@@ -29,22 +29,25 @@ class CodeView(TemplateView):
                     'output': output,
                 })
             elif mode == 'exec':
-                exec(cmd, globals(), locals())
+                cmd = "result = {code}".format(code=code)
+                exec(cmd)
                 context.update({
-                    'output': 'exec always returns None',
+                    'output': locals()['result'],
                 })
             else:
                 context.update({
                     'error': 'Mode not supported',
                 })
         except Exception as ex:
+            print("!!!!!!!!!!!!!!!!!!")
             context.update({
-                'error': "Error detected {}".format(ex),
+                'errors': "Error detected {}".format(ex),
             })
         finally:
+            var_locals = dict(locals())
+            del(var_locals['context'])
             context.update({
-                'globals': str(globals()),
-                'locals': str(locals()),
+                'locals': var_locals,
             })
             context.update({
                 'helper': cmd,
