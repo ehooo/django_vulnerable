@@ -1,0 +1,20 @@
+version: '1'
+services:
+  web:
+    build: .
+    ports:
+    - "8000:8000"
+    volumes:
+    - .:/code
+    - logvolume:/var/log
+    links:
+    - redis
+    - mongo
+  redis:
+    image: "redis:alpine"
+  mongo:
+    image: "mongodb"
+    # https://github.com/dockerfile/mongodb
+
+volumes:
+  logvolume: {}
