@@ -26,17 +26,23 @@ class BasicView(TemplateView):
         )
 
         user = User.objects.raw(sql)
+        context.update({
+            'helper': user.query,
+        })
         if bool(user):
-            context.update({
-                'login': user[0]
-            })
+            try:
+                context.update({
+                    'login': user[0]
+                })
+            except Exception as ex:
+                context.update({
+                    'errors': "User or password invalid",
+                    'helper': "{}\n{}: {}".format(user.query, ex.__class__.__name__, ex),
+                })
         else:
             context.update({
                 'errors': "User or password invalid",
             })
-        context.update({
-            'helper': user.query,
-        })
 
         return self.render_to_response(context)
 
@@ -65,18 +71,17 @@ class ExtraWhereView(TemplateView):
             "password='{password}'".format(password=password),
         ]
         user = User.objects.extra(where=where)
-        print(str(user.query))
+        context.update({
+            'helper': user.query,
+        })
         try:
             context.update({
                 'login': user.get()
             })
-        except:
+        except Exception as ex:
             context.update({
                 'errors': "User or password invalid",
-            })
-        finally:
-            context.update({
-                'helper': user.query,
+                'helper': "{}\n{}: {}".format(user.query, ex.__class__.__name__, ex),
             })
 
         return self.render_to_response(context)

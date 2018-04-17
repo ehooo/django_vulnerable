@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+import math
 
 
 class CodeView(TemplateView):
@@ -6,7 +7,8 @@ class CodeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(CodeView, self).get_context_data()
-        context['exploit'] = "__import__('os').kill(__import__('os').getpid(), __import__('signal').SIGTERM)"
+        context['exploit'] = "__import__('os').kill(__import__('os').getpid(), __import__('signal').SIGTERM)\n" \
+                             "math.sqrt(pow(2,4))"
         context['modes'] = ['eval', 'exec']
         return context
 

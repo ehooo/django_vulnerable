@@ -1,6 +1,12 @@
 {% extends 'vulnerable/base.html' %}
 {% block head %}{% endblock %}
 {% block body_class %}{% endblock %}
-{% block jumbotron %}
-    {{ about }}
+{% block body %}
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+        {{ about }}
+    </div>
+  </div>
+</main>
 {% endblock %}

@@ -1,23 +1,11 @@
 {% extends 'vulnerable/base.html' %}
 {% load static %}
-
-
 {% block head %}{% endblock %}
 
-{% block body %}
-<main role="main">
-<div class="container">
+{% block form %}
 <form class="form-ping" method="POST">
   <img class="mb-4" src="{% static "images/mlw.re.png" %}" alt="" width="128" height="128">
   <h1 class="h3 mb-3 font-weight-normal">Python Calculator</h1>
-  {% if errors %}<div class="alert alert-danger" role="alert">
-    {{ errors }}
-  </div>{% endif %}
-
-  {% if output %}<div class="alert alert-success" role="alert">
-    Output: <pre>{{ output|linebreaks }}</pre>
-  </div>
-  {% endif %}
 
   {% csrf_token %}
   <label for="inputCode" class="sr-only">Mode</label>
@@ -28,7 +16,10 @@
   <input name="code" type="text" id="inputCode" class="form-control"
          placeholder="Python code" required autofocus>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Execute</button>
+</form>
+{% endblock %}
 
+{% block help %}
   <div class="alert alert-warning" role="alert">
     {{ exploit|linebreaks }}
   </div>
@@ -36,7 +27,15 @@
     <pre>{% for key, val in locals.items %}{{ key }}:{{ val }}
     {% endfor %}</pre>
   </div>
-</form>
+{% endblock %}
 
-</main>
+{% block output %}
+  {% if errors %}<div class="alert alert-danger" role="alert">
+    {{ errors }}
+  </div>{% endif %}
+
+  {% if output %}<div class="alert alert-success" role="alert">
+    Output: <pre>{{ output|linebreaks }}</pre>
+  </div>
+  {% endif %}
 {% endblock %}
