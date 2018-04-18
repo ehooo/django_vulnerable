@@ -1,5 +1,8 @@
 {% extends 'vulnerable/base.html' %}
-{% block head %}{% endblock %}
+{% block head %}
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+{% endblock %}
 {% block body_class %}{% endblock %}
 {% block body %}
 <main role="main">
@@ -9,4 +12,15 @@
     </div>
   </div>
 </main>
+{% endblock %}
+{% block load_scripts %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/python.min.js"></script>
+<script>
+$(document).ready(function() {
+$('pre code').each(function(i, block) {
+  hljs.highlightBlock(block);
+});
+});
+</script>
 {% endblock %}

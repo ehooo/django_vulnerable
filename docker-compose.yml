@@ -8,13 +8,18 @@ services:
     - .:/code
     - logvolume:/var/log
     links:
-    - redis
     - mongo
+    - redis
+    - mq
+    - memcache
+  mongo:
+    image: "mongo"
   redis:
     image: "redis:alpine"
-  mongo:
-    image: "mongodb"
-    # https://github.com/dockerfile/mongodb
+  mq:
+    image: "rabbitmq:alpine"
+  memcache:
+    image: "memcached:alpine"
 
 volumes:
   logvolume: {}

@@ -8,6 +8,7 @@ Django = "*"
 django-extensions = "*"
 ipython = "*"
 markdown = "*"
+mongoengine = "*"
 
 [dev-packages]
 

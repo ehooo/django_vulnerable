@@ -1,5 +1,8 @@
-FROM python:3.4-alpine
+FROM python:3
 
+ENV PYTHONUNBUFFERED 1
+
+RUN mkdir /code
 ADD . /code
 WORKDIR /code
 
