@@ -22,9 +22,12 @@ class AboutView(TemplateView):
             if ext in ['md']:
                 text = mark_safe(markdown.markdown(text))
             elif ext in ['py', 'html', 'js', 'css']:
-                text = '<h4>{file}</h4><pre><code class="{lang}">{code}</code></pre>'.format(
+                lang = ext
+                if ext in ['py', 'html']:
+                    lang = 'django'
+                text = '<h4>{file}</h4><pre><code class="{lang} hljs">{code}</code></pre>'.format(
                     file=open_file,
-                    lang=ext,
+                    lang=lang,
                     code=escape(text)
                 )
                 text = mark_safe(text)

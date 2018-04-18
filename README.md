@@ -25,6 +25,7 @@ python manage.py runserver
 + [Django raw & extra](vulnerable/views/sql_injection.py)
 + [Python commands](vulnerable/views/commands.py)
 + [Python code](vulnerable/views/code.py)
++ [File inclusion](vulnerable/views/views.py)
 
 
 - [CWE-74](http://cwe.mitre.org/data/definitions/74.html):
