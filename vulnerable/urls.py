@@ -1,9 +1,10 @@
 from django.urls import path, re_path
 
-from .views import views
 from .views import code
 from .views import commands
 from .views import sql_injection
+from .views import views
+from .views import xss
 
 urlpatterns = [
     path('about/', views.AboutView.as_view(), name='about'),
@@ -13,4 +14,5 @@ urlpatterns = [
     path('sql/extra/where', sql_injection.ExtraWhereView.as_view(), name='sql_extra_where'),
     path('command', commands.CommandsView.as_view(), name='command_basic'),
     path('code', code.CodeView.as_view(), name='code_basic'),
+    path('xss', xss.XSSView.as_view(), name='xss_basic'),
 ]

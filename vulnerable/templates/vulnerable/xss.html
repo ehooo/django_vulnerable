@@ -1,0 +1,39 @@
+{% extends 'vulnerable/base.html' %}
+{% load static %}
+
+
+{% block form %}
+<form class="form-ping" method="POST">
+  <img class="mb-4" src="{% static "images/mlw.re.png" %}" alt="" width="128" height="128">
+  <h1 class="h3 mb-3 font-weight-normal">Tell me your name</h1>
+
+  {% csrf_token %}
+  <label for="inputName" class="sr-only">Name</label>
+  <input name="name" type="text" id="inputName" class="form-control"
+         placeholder="your name" required autofocus>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Hi!</button>
+</form>
+{% endblock %}
+
+{% block middle_row %}
+  <div class="align-self-center">
+    {% if message %}<div class="alert alert-success" role="alert">
+      {{ message|linebreaks }}
+    </div>{% endif %}
+</div>
+{% endblock %}
+
+{% block help %}
+  <div class="alert alert-warning" role="alert">
+    {{ exploit|linebreaks }}
+  </div>
+  {% if helper %}<div class="alert alert-primary" role="alert">
+    <pre>{{ helper }}</pre>
+  </div>{% endif %}
+{% endblock %}
+
+{% block output %}
+  {% if errors %}<div class="alert alert-danger" role="alert">
+    {{ errors }}
+  </div>{% endif %}
+{% endblock %}

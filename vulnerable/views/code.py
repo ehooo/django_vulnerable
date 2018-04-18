@@ -41,7 +41,6 @@ class CodeView(TemplateView):
                     'error': 'Mode not supported',
                 })
         except Exception as ex:
-            print("!!!!!!!!!!!!!!!!!!")
             context.update({
                 'errors': "Error detected {}".format(ex),
             })

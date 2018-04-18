@@ -28,6 +28,8 @@ python manage.py runserver
 + [File inclusion](vulnerable/views/views.py)
 
 
+## [Common Weakness Enumeration](http://cwe.mitre.org/index.html)
+
 - [CWE-74](http://cwe.mitre.org/data/definitions/74.html):
   Injection
 
