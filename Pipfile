@@ -8,7 +8,7 @@ Django = "*"
 django-extensions = "*"
 ipython = "*"
 markdown = "*"
-mongoengine = "*"
+cassandra-driver = "*"
 
 [dev-packages]
 
