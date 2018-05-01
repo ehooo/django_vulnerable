@@ -1,4 +1,4 @@
-version: '1'
+version: '3'
 services:
   web:
     build: .
@@ -7,17 +7,14 @@ services:
     volumes:
     - .:/code
     - logvolume:/var/log
-    links:
-    - mongo
+    depends_on:
+    - nosql
     - redis
-    - mq
     - memcache
-  mongo:
-    image: "mongo"
+  nosql:
+    image: "cassandra:3.0"
   redis:
     image: "redis:alpine"
-  mq:
-    image: "rabbitmq:alpine"
   memcache:
     image: "memcached:alpine"
 

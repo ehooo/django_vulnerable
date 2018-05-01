@@ -2,10 +2,10 @@
 Is a vulnerable app for learn about web security
 
 ## Backend
-  * Python 3
-  * Django 2
-  * Pipenv
-  * Django Extensions
+* [Python 3](https://www.python.org)
+* [Django 2](https://www.djangoproject.com)
+* [Pipenv](https://docs.pipenv.org)
+* [Django Extensions](https://github.com/django-extensions/django-extensions)
 
 ## Let Start
 ```
@@ -16,7 +16,6 @@ python manage.py runserver
 ```
 
 ## Vulnerabilities
-
 + FTP Injection
 + Redis Injection
 + Mongo Injection
@@ -110,7 +109,7 @@ python manage.py runserver
 - [CWE-99](http://cwe.mitre.org/data/definitions/99.html):
   Improper Control of Resource Identifiers ('Resource Injection')
 
-  _	The software receives input from an upstream component,
+  _The software receives input from an upstream component,
   but it does not restrict or incorrectly restricts the input
   before it is used as an identifier for a resource that
   may be outside the intended sphere of control._
