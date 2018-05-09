@@ -2,6 +2,7 @@ version: '3'
 services:
   web:
     build: .
+    image: "django_vulnerable"
     ports:
     - "8000:8000"
     volumes:
@@ -11,6 +12,8 @@ services:
     - nosql
     - redis
     - memcache
+    working_dir: /code
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
   nosql:
     image: "cassandra:3.0"
   redis:
