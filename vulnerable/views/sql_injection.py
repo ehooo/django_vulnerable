@@ -6,7 +6,7 @@ class BasicView(TemplateView):
     template_name = "vulnerable/login.html"
 
     def get_context_data(self, **kwargs):
-        context = super(BasicView, self).get_context_data()
+        context = super(BasicView, self).get_context_data(**kwargs)
         context['exploit'] = "' OR 1=1 --"
         return context
 

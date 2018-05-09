@@ -6,7 +6,7 @@ class XSSView(TemplateView):
     template_name = "vulnerable/xss.html"
 
     def get_context_data(self, **kwargs):
-        context = super(XSSView, self).get_context_data()
+        context = super(XSSView, self).get_context_data(**kwargs)
         context['exploit'] = "<script>alert('XSS');</script>"
         return context
 

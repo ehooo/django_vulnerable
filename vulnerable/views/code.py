@@ -6,7 +6,7 @@ class CodeView(TemplateView):
     template_name = "vulnerable/code.html"
 
     def get_context_data(self, **kwargs):
-        context = super(CodeView, self).get_context_data()
+        context = super(CodeView, self).get_context_data(**kwargs)
         context['exploit'] = "__import__('os').kill(__import__('os').getpid(), __import__('signal').SIGTERM)\n" \
                              "math.sqrt(pow(2,4))"
         context['modes'] = ['eval', 'exec']

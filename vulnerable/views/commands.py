@@ -8,7 +8,7 @@ class CommandsView(TemplateView):
     template_name = "vulnerable/ping.html"
 
     def get_context_data(self, **kwargs):
-        context = super(CommandsView, self).get_context_data()
+        context = super(CommandsView, self).get_context_data(**kwargs)
         context['exploit'] = "1.1.1.1; ls > system_ls.txt\n"
         context['exploit'] += "1.1.1.1 && ls > system_ls.txt\n"
         context['exploit'] += "1.1.1.1 & ls > system_ls.txt\n"

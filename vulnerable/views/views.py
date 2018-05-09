@@ -10,7 +10,7 @@ class AboutView(TemplateView):
     template_name = "vulnerable/about.html"
 
     def get_context_data(self, **kwargs):
-        context = super(AboutView, self).get_context_data()
+        context = super(AboutView, self).get_context_data(**kwargs)
         readme_file = os.path.join(settings.BASE_DIR, 'README.md')
         open_file = kwargs.get('path', '').strip('/').lower()
         try:
