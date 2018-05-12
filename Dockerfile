@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.6-jessie
 
 ENV PYTHONUNBUFFERED 1
 
@@ -13,7 +13,7 @@ RUN wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.
 
 ## COPY CODE
 RUN mkdir /code
-ADD Pipfile /code
+ADD requirements.txt /code
 ADD django_vulnerable /code/django_vulnerable
 ADD vulnerable /code/vulnerable
 ADD manage.py /code
@@ -21,10 +21,6 @@ ADD manage.py /code
 ## INSTALL CODE
 WORKDIR /code
 
-ENV PIPENV_IGNORE_VIRTUALENVS 1
-RUN pip install pipenv \
-    && pipenv install --deploy
-
-# ENV PYTHONPATH /code/_env/bin/python:/usr/local/bin/python
+RUN pip install -r requirements.txt
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
